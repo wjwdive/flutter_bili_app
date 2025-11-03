@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison
 
+import 'package:dio/dio.dart';
+import 'package:flutter_bili_app/http/core/dio_adapter.dart';
 import 'package:flutter_bili_app/http/core/hi_adapter.dart';
 import 'package:flutter_bili_app/http/core/hi_error.dart';
 import 'package:flutter_bili_app/http/core/mock_adapter.dart';
@@ -55,7 +57,7 @@ class HiNet{
     request.addHeader("token", "123");
     printLog("header:${request.header}");
     //模拟数据
-    HiNetAdapter adapter = MockAdapter();
+    HiNetAdapter adapter = DioAdapter();
     return adapter.send(request);
     // return Future.value({
     //             "statusCode": 200, 

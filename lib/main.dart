@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     });
       TestRequest request = TestRequest();
-      request.add("aa", "ddd");
+      request.add("aa", "ddd").add("requestPrams", "111");
       try{
         var result = await HiNet.getInstance().fire(request);
         print(result);
