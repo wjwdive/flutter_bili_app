@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bili_app/db/hi_cache.dart';
 import 'package:flutter_bili_app/http/core/hi_error.dart';
 import 'package:flutter_bili_app/http/core/hi_net.dart';
 import 'package:flutter_bili_app/http/core/mock_adapter.dart';
@@ -63,6 +64,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  //预初始化
+  @override
+  void initState(){
+    super.initState();
+    HiCache.preInit();
+  }
   void _incrementCounter() async {
     setState(()  {
       // This call to setState tells the Flutter framework that something has
@@ -90,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       test();
       test1();
+      test2();
   }
 
   void test() {
@@ -114,6 +122,12 @@ class _MyHomePageState extends State<MyHomePage> {
     print("face: ${owner.face}");  
     print("fans: ${owner.fans}");
     
+  }
+
+  void test2() async{
+    await HiCache.getInstance().setString("userName", "Jarvis");
+    String? name = await HiCache.getInstance().get("userName");
+    print(name);
   }
 
   @override
