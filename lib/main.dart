@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bili_app/http/core/hi_error.dart';
 import 'package:flutter_bili_app/http/core/hi_net.dart';
@@ -84,8 +86,20 @@ class _MyHomePageState extends State<MyHomePage> {
       } catch (e) {
         print(e);
       }
+
+      test();
   }
 
+  void test() {
+    const jsonString = "{ \"name\": \"flutter\", \"url\": \"https://flutter.dev\"}";
+    //json转 map
+    Map<String, dynamic> map = jsonDecode(jsonString);
+    print("name: ${map['name']}");
+    print("url: ${map['url']}");
+    //map转json
+    String jsonString1 = jsonEncode(map);//参数可以是map或其他类型数据
+    print(jsonString1);
+  }
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
