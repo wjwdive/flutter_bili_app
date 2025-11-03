@@ -5,6 +5,7 @@ import 'package:flutter_bili_app/http/core/hi_error.dart';
 import 'package:flutter_bili_app/http/core/hi_net.dart';
 import 'package:flutter_bili_app/http/core/mock_adapter.dart';
 import 'package:flutter_bili_app/http/request/test_request.dart';
+import 'package:flutter_bili_app/model/owner.dart';
 
 void main() {
   runApp(const MyApp());
@@ -88,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
       }
 
       test();
+      test1();
   }
 
   void test() {
@@ -100,6 +102,20 @@ class _MyHomePageState extends State<MyHomePage> {
     String jsonString1 = jsonEncode(map);//参数可以是map或其他类型数据
     print(jsonString1);
   }
+
+  void test1() {
+    var ownerMap = {
+      "name": "flutter",
+      "face": "https://flutter.dev/images/flutter-logo-sharing.png",
+      "fans": 1000
+    };
+    Owner owner = Owner.fromJson(ownerMap);
+    print("name: ${owner.name }");
+    print("face: ${owner.face}");  
+    print("fans: ${owner.fans}");
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
